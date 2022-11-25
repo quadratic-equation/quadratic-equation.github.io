@@ -5,14 +5,194 @@
 <head>
     <meta charset="utf-8" />
     <title>
-        Главная страница
+        Страница обо мне!
     </title>
+    <link rel="stylesheet" href="styles_about_me.css" />
 </head>
 
 <body>
-    <h1>
-        Юля, привет! как дела?
-    </h1>
+    <div class="page_wraper">
+        <div class="white">
+            <div class="head">
+                <b>Квадратные уравнения</b>
+            </div>
+            <div class="menu">
+                <i>Применение 1 и 2 следствия при решении квадратных уравнений на уроках математики при подготовке к
+                    ОГЭ</i>
+            </div>
+            <!--
+            <div class="title">
+                Обо мне
+            </div>-->
+            <div class="content_about_me">
+                <div class="my_img">
+                    <img src="my_photo.jpg" title="Математический опрный сигнал" />
+                </div>
+                <div class="text_about_me">
+                    <img src="my_photo_.jpg" title="Доказательства 1 и 2 следствия" />
+
+                </div>
+                <div class="clear"></div>
+                <div class="few_words">
+                    <span>
+                        <i>Несколько слов о квадратных уравнениях</i>
+                    </span>
+                </div>
+
+                <div class="quote">
+
+                    <p>
+                        1 следствие: В случае, если сумма коэффициентов а + b+ c равна нулю, то применимо 1 следствие.
+                        => X1=1; X2=c/a
+                    </p>
+                    <p> 2 следствие: Если: a + b + c ≠ 0, то пробуем изменить знак между коэффициентами a и b на
+                        противоположный. В случае, сложения всех трёх коэффициентов - равно нулю, то применимо 2
+                        следствие. => X1=-1; X2=-(c/a)
+                    </p>
+                    <p>
+                        Решить квадратные уравнения, помимо стандартного способа (дискриминант), можно разными
+                        вариантами. В данной статье подробно описан один из них: применение 1 и 2 следствия при решении
+                        квадратных уравнений. Конечно, этот способ не будет распространятся на все существующие
+                        квадратные уравнения, а только на те, у которых сумма коэффициентов будет равна нулю. Но
+                        овладение данным способом поможет Вам экономить время и эффективно решать уравнения.
+                    </p>
+                    <p>
+                        После изучения теоретического материала, представленным в этой статье, Вы можете закрепить
+                        полученные знания интерактивным тренажёром, расположенным ниже.
+                    </p>
+                    <i>Фронина Алиса Александровна, ученица 9"В" класса</i>
+
+                </div>
+
+            </div>
+            <div class="skils">
+
+
+                <button onclick="generirovat()">Генерировать квадратное уравнение</button>
+
+                <div>
+
+                    <b>
+                        <i id="cofic_a"></i>x<sup>2 </sup><i id="znak_a_b"></i><i id="cofic_b"></i>x <i
+                            id="znak_b_c"></i><i id="cofic_c"></i> = 0
+                    </b>
+                    <div></div>
+                    Найти x1, x2
+                    <div></div>
+                    x1 =
+                    <input id="num_x1" />
+                    <div></div>
+                    x2 =
+                    <input id="num_x2" />
+                    <div></div>
+                    <button onclick="proverit()">Проверить</button>
+                    <div></div>
+                    <b>Ответ <a id="rezultat"></a></b>
+                    <div></div>
+                    Верный ответ
+                    <div>
+                        x1= <a id="x1"></a>
+                    </div>
+                    <div>
+                        x2= <a id="x2"></a>
+                    </div>
+
+                </div>
+
+
+
+            </div>
+            <div class="reviews">
+
+            </div>
+        </div>
+        <div class="black">
+            <div class="footer">
+                <div class="footer_cols">
+                    <div class="addres">
+                    </div>
+                    <div class="contactacts">
+                        Почта: alisa.fronina@mail.ru
+                    </div>
+                    <div class="sociaal_link">
+                        inst: aiisa_fronina
+                        <div></div>
+                        VK: alisonchiccc
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+        var cofic_a;
+        var cofic_b;
+        var cofic_c;
+        var num_x1;
+        var num_x2;
+        var x1;
+        var x2;
+        var znak_a_b;
+        var znak_b_c;
+        var otvet;
+        var dis;
+        var znak;
+        function generirovat() {
+            do {
+                do {
+                    do {
+                        cofic_a = Math.floor(Math.random() * -39 + 20);
+                        cofic_b = Math.floor(Math.random() * -39 + 20);
+                        znak = Math.floor(Math.random() * 2);
+                        //cofic_c = Math.floor(Math.random() * -39 + 20);
+                        if (znak == 1) cofic_c = (cofic_a - cofic_b) * (-1);
+                        else cofic_c = (cofic_a + cofic_b) * (-1);
+                    } while (cofic_a == 0 || cofic_b == 0 || cofic_c == 0);
+                    dis = (cofic_b * cofic_b) - (4 * cofic_a * cofic_c);
+                } while (dis < 0);
+                if (dis == 0) {
+                    x1 = -cofic_b / (2 * cofic_a);
+                }
+                if (dis > 0) {
+                    x1 = ((-1 * cofic_b) + Math.sqrt(dis)) / (2 * cofic_a);
+                    x2 = ((-1 * cofic_b) - Math.sqrt(dis)) / (2 * cofic_a);
+                }
+
+            } while (x1.toString().match(/\.(\d+)/)?.[1].length > 1 || x2.toString().match(/\.(\d+)/)?.[1].length > 1);
+
+            if (cofic_b > 0) document.getElementById("znak_a_b").innerHTML = "+";
+            else document.getElementById("znak_a_b").innerHTML = "";
+            if (cofic_c > 0) document.getElementById("znak_b_c").innerHTML = "+";
+            else document.getElementById("znak_b_c").innerHTML = "";
+            document.getElementById("cofic_a").innerHTML = cofic_a;
+            document.getElementById("cofic_b").innerHTML = cofic_b;
+            document.getElementById("cofic_c").innerHTML = cofic_c;
+            document.getElementById("dis").innerHTML = dis;
+
+        }
+        function proverit() {
+
+            num_x1 = Number(document.getElementById("num_x1").value);
+            num_x2 = Number(document.getElementById("num_x2").value);
+            if (dis == 0) {
+                if (num_x1 == x1 && document.getElementById("num_x2").value == "") {
+                    document.getElementById("rezultat").innerHTML = "правильный";
+                }
+                else document.getElementById("rezultat").innerHTML = "неправильный";
+                document.getElementById("x1").innerHTML = x1;
+                document.getElementById("x2").innerHTML = "";
+            }
+            else {
+                if (num_x1 == x1 && num_x2 == x2 || num_x1 == x2 && num_x2 == x1) {
+                    document.getElementById("rezultat").innerHTML = "правильный";
+                }
+                else document.getElementById("rezultat").innerHTML = "неправильный";
+                document.getElementById("x1").innerHTML = x1;
+                document.getElementById("x2").innerHTML = x2;
+            }
+        }
+    </script>
 </body>
 
 </html>
